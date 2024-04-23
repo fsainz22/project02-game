@@ -7,3 +7,7 @@ Lab Section:  002
 
 CODE DESCRIPTION: RPG game
 """
+
+
+
+print('Hello World!')
