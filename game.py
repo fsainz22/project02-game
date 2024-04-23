@@ -9,6 +9,16 @@ CODE DESCRIPTION: RPG game
 """
 
 import other
+from other import Room
+from other import ExitNotFoundError
+import logging
+
+logging.basicConfig(filename='output.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger('my_logger')
+logger.info('info message')
+logger.warning('warning message')
+logger.error('error message')
+logging.shutdown()
 
 def main():
     game_map = other.AdventureMap()
@@ -53,3 +63,6 @@ def main():
         except ExitNotFoundError as e:
         
             print(e) # prints out the raised error
+
+if __name__ == "__main__":
+    main()
