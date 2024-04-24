@@ -6,13 +6,17 @@ class ExitNotFoundError(Exception):
     def __str__(self):
         return f"{self.name} -> {self.message}"
 
-# Step 2
+class Item:
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
 class Room: 
     def __init__(self, name, description, exits):
         self.name = name
         self.description = description
         self.exits = exits
-        
+        self.items = []
     
     def get_name(self):
         return self.name
@@ -41,6 +45,6 @@ class AdventureMap:
     def get_room(self, room_name):
         room = self.map.get(room_name.title()) # gets the room and checks if it is in the dict
         if room:
-            return room
+            return room, room.items
         else:
             raise ExitNotFoundError(room_name)
