@@ -13,24 +13,15 @@ from other import Room
 from other import ExitNotFoundError
 from other import Item
 import random
-# import logging
-
-# logging.basicConfig(filename='output.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-# logger = logging.getLogger('my_logger')
-# logger.info('info message')
-# logger.warning('warning message')
-# logger.error('error message')
-# logging.shutdown()
 
 def main():
     game_map = other.AdventureMap()
     print("\nWelcome to the Adkins house! Entering the study room. To leave the house, please type exit to jump out of the nearest window.\n")
 
     items = [
-        Item('Key','A key.'),
-        Item('Small Key','A small key')
+        Item("Key", "A Key"),
+        Item("Red Key", "A red key")
     ]
-
 
     rooms = [
         Room("Guest Room", "A room filled with numerous torture devices. Who said anything about welcome guests?", ['Kitchen']),
@@ -50,7 +41,6 @@ def main():
     
     for room in rooms:
         game_map.add_room(room)
-
 
     current_room = 'Study'
     
@@ -85,3 +75,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# import logging
+
+# logging.basicConfig(filename='output.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# logger = logging.getLogger('my_logger')
+# logger.info('info message')
+# logger.warning('warning message')
+# logger.error('error message')
+# logging.shutdown()

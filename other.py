@@ -45,6 +45,6 @@ class AdventureMap:
     def get_room(self, room_name):
         room = self.map.get(room_name.title()) # gets the room and checks if it is in the dict
         if room:
-            return room, room.items
+            return room#, room_items
         else:
             raise ExitNotFoundError(room_name)
