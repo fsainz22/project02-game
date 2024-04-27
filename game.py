@@ -7,17 +7,14 @@ Lab Section:  002
 
 CODE DESCRIPTION: RPG game
 """
-import pickle
+
 import other
-from other import Room, ExitNotFoundError, Item, CollectedItems, Game
+from other import Room, ExitNotFoundError, Item, CollectedItems
 import random
 
 
 def main():
     game_map = other.AdventureMap()
-    
-    game = other.Game()
-    game.load_game('save_game')
 
     print("\nWelcome to the Adkins house! Entering the study room. To leave the house, please type exit to jump out of the nearest window.\n")
 
@@ -136,8 +133,6 @@ def main():
                 if found_key:
             
                     print("Exiting the house with the Key... Congratulations on escaping!")
-
-                    game.save_game('save_game')
 
                     exit()
             

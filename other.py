@@ -1,4 +1,3 @@
-import pickle
 
 class ExitNotFoundError(Exception):
     def __init__(self, name, message="Room not found"):
@@ -72,30 +71,3 @@ class CollectedItems(list):
 
         else:
             print("No items collected.")
-
-class Game:
-    def __init(self):
-        self.game_map= AdventureMap()
-        self.collected_items = []
-        self. current_room = 'Study'
-
-    def save_game(self, file_name):
-        
-        game_state = {
-            'collected_items': self.collected_items,
-            'current_room': self.current_room
-        }
-        
-        with open("file_name.pickle", 'wb') as file:
-        
-            pickle.dump(game_state, file)
-
-    def load_game(self, file_name):
-        
-        with open("file_name.pickle", 'rb') as file:
-        
-            game_state = pickle.load(file)
-
-        self.collected_items = game_state['collected_items']
-
-        self.current_room = game_state['current_room']
