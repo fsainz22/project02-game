@@ -71,3 +71,4 @@ class CollectedItems(list):
 
         else:
             print("No items collected.")
+    
