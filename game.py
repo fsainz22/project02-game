@@ -6,6 +6,7 @@ Course: CPSC1050
 Lab Section:  002
 
 CODE DESCRIPTION: RPG game
+GitHub link: https://github.com/fsainz22/project02-game/tree/main
 """
 
 import other
