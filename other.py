@@ -29,9 +29,15 @@ class Room:
     
     def list_exits(self):
         return '\n'.join(self.exits) # makes the list a str that is spread out over new lines
+
+    def list_items(self):
+        if self.items:
+            return "Items in the room:\n" + "\n".join([item.name for item in self.items])
+        else:
+            return "No items in the room."
     
     def __str__(self):
-        return f"{self.name}: {self.description}\n\nExits:\n{self.list_exits()}"
+        return f"{self.name}: {self.description}\n\nExits:\n{self.list_exits()}\n\n{self.list_items()}"
 
 class AdventureMap:
     def __init__(self):
