@@ -54,3 +54,19 @@ class AdventureMap:
             return room#, room_items
         else:
             raise ExitNotFoundError(room_name)
+
+class CollectedItems(list):
+    def has_item(self, item_name):
+        for item in self:
+            if item.name == item.name:
+                return True
+        return False
+
+    def print_items(self):
+        if self:
+            print("Collected items:")
+            for item in self:
+                print(f"- {item.name}")
+
+        else:
+            print("No items collected.")

@@ -9,9 +9,7 @@ CODE DESCRIPTION: RPG game
 """
 
 import other
-from other import Room
-from other import ExitNotFoundError
-from other import Item
+from other import Room, ExitNotFoundError, Item, CollectedItems
 import random
 
 def main():
@@ -19,7 +17,7 @@ def main():
     
     print("\nWelcome to the Adkins house! Entering the study room. To leave the house, please type exit to jump out of the nearest window.\n")
 
-    collected_items = []
+    collected_items = other.CollectedItems()
 
     items = [
         Item("Key", "A Key"),
@@ -42,19 +40,23 @@ def main():
         
         room = random.choice(rooms)
         
-        room.items.append(item)
+        if room.name != "Holodeck" or item.name != "Red Key":
+        
+            room.items.append(item)
     
     for room in rooms:
         
         game_map.add_room(room)
 
+    dec = ''
+
     current_room = 'Study'
     
     room = game_map.get_room(current_room) # gets study as the first room and outputs it for the user
 
-    while True:
+    print(room)
 
-        print(room)
+    while True:
 
         if room.items:
             
@@ -62,23 +64,55 @@ def main():
             
                 dec = input(f"Do you want to pick up the {item.name}? (yes/no): ").lower().strip()
             
-            if dec == 'yes':
+                if dec == 'yes':
             
-                collected_items.append(item)
+                    collected_items.append(item)
             
-                print(f"You have picked up the {item.name}.")
+                    print(f"You have picked up the {item.name}.")
+
+                    if item.name == "Key":
+                        
+                        print("You can now escape just type 'exit'.")
             
-                room.items.remove(item)
-        
+                    room.items.remove(item)
+
         exit_dec = input('Please choose an exit:\n').lower().strip() # gets the input
         
         try:    
 
             if exit_dec.title() in room.exits: # if the input is in the exits of that room then room is set and printed out
-                
-                room = game_map.get_room(exit_dec)
 
-                print(room)
+                if exit_dec.title() == "Holodeck":
+            
+                    red_key = False
+
+                    for item in collected_items:
+            
+                        if item.name == "Red Key":
+            
+                            red_key = True
+                    
+                            break
+
+                    if red_key:
+                
+                        print("Entering Holodeck using the Red Key...\n")
+
+                        room = game_map.get_room(exit_dec)
+
+                        print(room)
+
+                    else:
+
+                        print("You need the red key to enter the Holodeck!\n")
+
+                        print(room)
+                        
+                else:
+                    
+                    room = game_map.get_room(exit_dec)
+                    
+                    print(room)
             
             elif exit_dec == 'exit': # if exit is inputted then exits
 
@@ -109,6 +143,10 @@ def main():
         except ExitNotFoundError as e:
         
             print(e) # prints out the raised error
+
+
+        
+
 
 if __name__ == "__main__":
     main()
